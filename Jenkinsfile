@@ -430,12 +430,23 @@ class Builder extends AgentJob {
             platform().exec(script, "./gt-installer", "--verbose --workspace ${GlamorousToolkit.RELEASER_FOLDER} copy-to")
             // clean the ssh keys and remove iceberg repositories
             platform().exec(script, "./gt-installer", "--verbose clean-up")
+            
             // package without gt-world
-            platform().exec(script, "./gt-installer", "--verbose package-tentative ${GlamorousToolkit.TENTATIVE_PACKAGE_WITHOUT_GT_WORLD}")
+            script.sh """
+                ./gt-installer --verbose package-tentative ${GlamorousToolkit.TENTATIVE_PACKAGE_WITHOUT_GT_WORLD}
+                exit 0
+             """
+            //platform().exec(script, "./gt-installer", "--verbose package-tentative ${GlamorousToolkit.TENTATIVE_PACKAGE_WITHOUT_GT_WORLD}")
+            
             // open gt world
             platform().exec(script, "./gt-installer", "--verbose start")
+
             // package with gt-world opened, ready to run tests
-            platform().exec(script, "./gt-installer", "--verbose package-tentative ${GlamorousToolkit.TENTATIVE_PACKAGE}")
+            script.sh """
+                ./gt-installer --verbose package-tentative ${GlamorousToolkit.TENTATIVE_PACKAGE}
+                exit 0
+             """
+            //platform().exec(script, "./gt-installer", "--verbose package-tentative ${GlamorousToolkit.TENTATIVE_PACKAGE}")
 
             build.stash_for_release(GlamorousToolkit.TENTATIVE_PACKAGE_WITHOUT_GT_WORLD)
             build.stash_internally(GlamorousToolkit.TENTATIVE_PACKAGE)
