@@ -433,6 +433,7 @@ class Builder extends AgentJob {
             
             // package without gt-world
             script.sh """
+                set +e
                 ./gt-installer --verbose package-tentative ${GlamorousToolkit.TENTATIVE_PACKAGE_WITHOUT_GT_WORLD}
                 exit 0
              """
@@ -443,6 +444,7 @@ class Builder extends AgentJob {
 
             // package with gt-world opened, ready to run tests
             script.sh """
+                set +e
                 ./gt-installer --verbose package-tentative ${GlamorousToolkit.TENTATIVE_PACKAGE}
                 exit 0
              """
