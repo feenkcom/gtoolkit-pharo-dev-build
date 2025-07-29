@@ -144,10 +144,10 @@ class GlamorousToolkit {
 
         test_and_package()
 
-        //script.node(agent.label()) {
-            //release()
+        script.node(agent.label()) {
+            release()
             //releaseDockerImage()
-        //}
+        }
     }
 
     void build() {
@@ -248,42 +248,42 @@ class GlamorousToolkit {
 
         download_releaser()
 
-        script.sshagent(credentials: ['jenkins-ubuntu-node-aliaksei-syrel']) {
-            agent.platform().exec(
-                    script,
-                    "./gt-installer",
-                    "--verbose " +
-                            "--workspace ${RELEASER_FOLDER} " +
-                            "run-releaser " +
-                            "--bump ${bump}")
-        }
+        //script.sshagent(credentials: ['jenkins-ubuntu-node-aliaksei-syrel']) {
+        //    agent.platform().exec(
+        //            script,
+        //            "./gt-installer",
+        //            "--verbose " +
+        //                    "--workspace ${RELEASER_FOLDER} " +
+        //                    "run-releaser " +
+        //                    "--bump ${bump}")
+        //}
 
         script.withCredentials([script.string(credentialsId: 'githubrelease', variable: 'GITHUB_TOKEN')]) {
             agent.platform().exec(script,
                     "./feenk-releaser",
                     "--owner feenkcom " +
-                            "--repo gtoolkit " +
+                            "--repo gtoolkit-dev " +
                             "--token GITHUB_TOKEN " +
                             "release " +
-                            "--version ${gtoolkitVersion} " +
+                            "--version ${gtoolkitVersion}-pharo12 " +
                             "--auto-accept " +
                             "--assets ${artefacts_to_release}")
         }
 
-        script.sshagent(credentials: ['jenkins-ubuntu-node-aliaksei-syrel']) {
-            script.sh "chmod +x ./scripts/build/*.sh"
-            script.sh "./scripts/build/upload.sh"
-        }
+        //script.sshagent(credentials: ['jenkins-ubuntu-node-aliaksei-syrel']) {
+        //    script.sh "chmod +x ./scripts/build/*.sh"
+        //    script.sh "./scripts/build/upload.sh"
+        //}
 
-        script.withCredentials([script.sshUserPrivateKey(credentialsId: '31ee68a9-4d6c-48f3-9769-a2b8b50452b0', keyFileVariable: 'REMOTE_IDENTITY_FILE', passphraseVariable: '', usernameVariable: 'REMOTE_USERNAME')]) {
-            def remote = [:]
-            remote.name = 'deploy'
-            remote.host = 'sftp.feenk.com'
-            remote.user = script.env.REMOTE_USERNAME
-            remote.identityFile = script.env.REMOTE_IDENTITY_FILE
-            remote.allowAnyHosts = true
-            script.sshScript remote: remote, script: "scripts/build/update-latest-links.sh"
-        }
+        //script.withCredentials([script.sshUserPrivateKey(credentialsId: '31ee68a9-4d6c-48f3-9769-a2b8b50452b0', keyFileVariable: 'REMOTE_IDENTITY_FILE', passphraseVariable: '', usernameVariable: 'REMOTE_USERNAME')]) {
+        //    def remote = [:]
+        //    remote.name = 'deploy'
+        //    remote.host = 'sftp.feenk.com'
+        //    remote.user = script.env.REMOTE_USERNAME
+        //    remote.identityFile = script.env.REMOTE_IDENTITY_FILE
+        //    remote.allowAnyHosts = true
+        //    script.sshScript remote: remote, script: "scripts/build/update-latest-links.sh"
+        //}
     }
 
     void stash_for_release(String path, String key = null) {
