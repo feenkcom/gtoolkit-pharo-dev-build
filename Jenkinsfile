@@ -131,9 +131,9 @@ class GlamorousToolkit {
         jobs = [
                 new TestAndPackage(this, new Agent(Triplet.MacOS_Aarch64), Triplet.MacOS_Aarch64),
                 //new TestAndPackage(this, new Agent(Triplet.MacOS_X86_64), Triplet.MacOS_X86_64),
-                //new TestAndPackageWithGemstoneAndPython(this, new Agent(Triplet.Linux_X86_64, "scooby-doo"), Triplet.Linux_X86_64),
-                //new TestAndPackage(this, new Agent(Triplet.Linux_Aarch64, "peter-pan"), Triplet.Linux_Aarch64),
-                //new TestAndPackage(this, new Agent(Triplet.Windows_X86_64, "daffy-duck"), Triplet.Windows_X86_64).add_release_target(Triplet.Windows_Aarch64)
+                new TestAndPackage(this, new Agent(Triplet.Linux_X86_64, "scooby-doo"), Triplet.Linux_X86_64),
+                new TestAndPackage(this, new Agent(Triplet.Linux_Aarch64, "peter-pan"), Triplet.Linux_Aarch64),
+                new TestAndPackage(this, new Agent(Triplet.Windows_X86_64, "daffy-duck"), Triplet.Windows_X86_64).add_release_target(Triplet.Windows_Aarch64)
         ]
     }
 
@@ -265,7 +265,7 @@ class GlamorousToolkit {
                             "--repo gtoolkit-dev " +
                             "--token GITHUB_TOKEN " +
                             "release " +
-                            "--version ${gtoolkitVersion}-pharo12 " +
+                            "--version '${gtoolkitVersion}-pharo12' " +
                             "--auto-accept " +
                             "--assets ${artefacts_to_release}")
         }
