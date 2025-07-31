@@ -262,10 +262,10 @@ class GlamorousToolkit {
             agent.platform().exec(script,
                     "./feenk-releaser",
                     "--owner feenkcom " +
-                            "--repo gtoolkit-dev " +
+                            "--repo gtoolkit-pharo-dev-build " +
                             "--token GITHUB_TOKEN " +
                             "release " +
-                            "--version '${gtoolkitVersion}-pharo12' " +
+                            "--version ${gtoolkitVersion} " +
                             "--auto-accept " +
                             "--assets ${artefacts_to_release}")
         }
