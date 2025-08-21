@@ -2,7 +2,7 @@ import hudson.tasks.test.AbstractTestResultAction
 import hudson.model.Actionable
 import hudson.tasks.junit.CaseResult
 
-properties([
+properties([ 
         parameters([
                 choice(name: 'BUMP', choices: ['patch', 'minor', 'major'], description: 'What to bump when releasing'),
                 booleanParam(name: 'RUN_TESTS', defaultValue: true, description: 'Run tests during the build')
