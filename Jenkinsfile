@@ -76,11 +76,11 @@ class GlamorousToolkit {
     static final EXAMPLES_FOLDER = "gt-examples"
     static final LEPITER_WINDOWS = "C:/Users/Administrator/Documents/lepiter"
     static final LEPITER_UNIX = "~/Documents/lepiter"
-    static final PHARO_IMAGE_URL = "https://files.pharo.org/image/120/Pharo12.0-SNAPSHOT.build.1587.sha.97e7f4fc63.arch.64bit.zip"
-    static final TENTATIVE_PACKAGE_WITHOUT_GT_WORLD = 'GlamorousToolkit-image-without-world-Pharo12.zip'
-    static final TENTATIVE_PACKAGE = 'GlamorousToolkit-tentative-Pharo12.zip'
-    static final TEST_OPTIONS = '--disable-deprecation-rewrites --skip-packages "GToolkit-Boxer" "Sparta-Cairo" "Sparta-Skia" "GToolkit-RemoteExamples-GemStone" "PythonBridge-Pharo"'
-    static final RELEASE_PACKAGE_TEMPLATE = 'GlamorousToolkit-{{os}}-{{arch}}-v{{version}}-Pharo12.zip'
+    static final PHARO_IMAGE_URL = "https://files.pharo.org/image/130/Pharo13.0-SNAPSHOT.build.729.sha.f201357c22.arch.64bit.zip"
+    static final TENTATIVE_PACKAGE_WITHOUT_GT_WORLD = 'GlamorousToolkit-image-without-world-Pharo13.zip'
+    static final TENTATIVE_PACKAGE = 'GlamorousToolkit-tentative-Pharo13.zip'
+    static final TEST_OPTIONS = '--disable-deprecation-rewrites --skip-packages "GToolkit-Boxer" "GToolkit-Editor" "Sparta-Cairo" "Sparta-Skia" "GToolkit-RemoteExamples-GemStone" "PythonBridge-Pharo"'
+    static final RELEASE_PACKAGE_TEMPLATE = 'GlamorousToolkit-{{os}}-{{arch}}-v{{version}}-Pharo13.zip'
     static final DOCKER_REPOSITORY = 'feenkcom/gtoolkit'
     static final DOCKER_TENTATIVE_TAG = 'tentative'
 
