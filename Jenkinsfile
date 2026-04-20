@@ -79,7 +79,7 @@ class GlamorousToolkit {
     static final PHARO_IMAGE_URL = "https://files.pharo.org/image/130/Pharo13.0-SNAPSHOT.build.729.sha.f201357c22.arch.64bit.zip"
     static final TENTATIVE_PACKAGE_WITHOUT_GT_WORLD = 'GlamorousToolkit-image-without-world-Pharo13.zip'
     static final TENTATIVE_PACKAGE = 'GlamorousToolkit-tentative-Pharo13.zip'
-    static final TEST_OPTIONS = '--disable-deprecation-rewrites --skip-packages "GToolkit-Boxer" "GToolkit-Editor" "Sparta-Cairo" "Sparta-Skia" "GToolkit-RemoteExamples-GemStone" "PythonBridge-Pharo"'
+    static final TEST_OPTIONS = '--disable-deprecation-rewrites --skip-packages "GToolkit4Git" "GToolkit-Boxer" "GToolkit-Editor" "Sparta-Cairo" "Sparta-Skia" "GToolkit-RemoteExamples-GemStone" "PythonBridge-Pharo"'
     static final RELEASE_PACKAGE_TEMPLATE = 'GlamorousToolkit-{{os}}-{{arch}}-v{{version}}-Pharo13.zip'
     static final DOCKER_REPOSITORY = 'feenkcom/gtoolkit'
     static final DOCKER_TENTATIVE_TAG = 'tentative'
